@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import tw from "twin.macro";
 
-const Login = () => {
+const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState(["", ""]) as any;
@@ -11,8 +11,8 @@ const Login = () => {
   const handleLogin = async (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
     setErrors(validateInputs(email, password));
-
-    fetch("http://localhost:4000/login", {
+    if (!email && !password) return;
+    fetch("http://localhost:4000/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -21,7 +21,7 @@ const Login = () => {
       }),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data.user));
+      .then((data) => console.log(data));
   };
 
   return (
@@ -44,19 +44,17 @@ const Login = () => {
         tw="flex bg-gray-100 px-6 py-8 mt-6 rounded-md flex-col w-96 shadow border-2 border-gray-300"
         onSubmit={handleLogin}
       >
-        <h3 tw="font-bold text-2xl content-center w-full">Login</h3>
-
+        <h3 tw="font-bold text-2xl content-center w-full">Sign Up</h3>
         <div tw="flex justify-between">
           <label htmlFor="email" tw="text-lg text-gray-500 font-bold">
             Email
-          </label>{" "}
+          </label>
           <span tw="text-red-500 font-bold">{errors[0]}</span>
         </div>
 
         <input
           type="email"
           aria-label="email"
-          required
           placeholder="email@user.com"
           tw="border-4 w-full border-gray-300 rounded-md p-2"
           value={email}
@@ -87,10 +85,10 @@ const Login = () => {
           tw="px-12 py-4 bg-red-400 mt-4 rounded-md text-white font-bold"
           type="submit"
         >
-          Login
+          Create Account
         </button>
 
-        <a href="/signup">Create Acccount</a>
+        <a href="/login">Login</a>
       </form>
 
       <a href="https://anthondev.com" tw="text-white mt-4">
@@ -124,4 +122,4 @@ const validateEmail = (email: string) => {
     );
 };
 
-export default Login;
+export default Signup;
