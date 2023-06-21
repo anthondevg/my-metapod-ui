@@ -1,6 +1,6 @@
-#My Metapod UI
+# My Metapod UI
 
-![alt text](https://images.wikidexcdn.net/mwuploads/wikidex/6/6b/latest/20200307022334/Metapod.png)
+![alt text](https://static.wikia.nocookie.net/videojuego/images/b/b1/Metapod.gif/revision/latest?cb=20070527120420)
 
 A simple UI to display pokemon with login and pokemon features
 
