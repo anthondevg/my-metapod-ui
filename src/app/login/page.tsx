@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import tw from "twin.macro";
 import { validateInputs } from "../utils/validations";
 import Modal from "./ modal";
+import login from "../utils/auth";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
   interface modalTypes {
@@ -16,42 +18,54 @@ const Login = () => {
   const [errors, setErrors] = useState([]) as any;
   const [loading, setLoading] = useState(false);
   const [modal, setModal] = useState({} as modalTypes);
+  const router = useRouter();
 
   const handleLogin = async (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
+    resetModal();
     // validate inputs
     const errors = await validateInputs(email, password);
     setErrors(errors);
+
     if (errors.length) return; // if inputs ok make request
 
     setLoading(true); // loading state
 
-    fetch("http://localhost:4000/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    })
-      .then((res) =>
-        res.json().then((data) => ({ status: res.status, body: data }))
-      )
-      .then((data) => {
-        setTimeout(() => {
-          data.status == 200
-            ? setModal({
-                variant: "success",
-                message: "Success! Welcome back",
-              })
-            : setModal({
-                variant: "error",
-                message: data.body,
-              });
+    login(email, password).then((data: any) => {
+      console.log(data.status);
 
-          setLoading(false);
-        }, 500);
-      });
+      setTimeout(() => {
+        switch (data.status) {
+          case 200:
+            console.log(data.body);
+            localStorage.setItem("access_token", data.body.accessToken);
+            setModal({
+              variant: "success",
+              message: "Success! Redirecting to dashboard...",
+            });
+            setTimeout(() => {
+              //router.push("/dashboard");
+            }, 1000);
+            break;
+          case 400:
+            setModal({
+              variant: "error",
+              message: data.body,
+            });
+          default:
+            break;
+        }
+
+        setLoading(false);
+      }, 650);
+    });
+  };
+
+  const resetModal = () => {
+    setModal({
+      variant: "",
+      message: "",
+    }); //remove modal if exists
   };
 
   return (
@@ -94,7 +108,7 @@ const Login = () => {
         <div tw="flex justify-between">
           <label htmlFor="email" tw="text-lg text-gray-500 font-bold">
             Email
-          </label>{" "}
+          </label>
         </div>
 
         <input
