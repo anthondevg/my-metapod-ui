@@ -1,10 +1,13 @@
 # My-Metapod-Next/UI
 
-![alt text](https://www.icons101.com/icon_png/size_256/id_60004/011_Metapod.png)
+![alt text](https://static.wikia.nocookie.net/smashtopia/images/6/6b/Metapod.png/revision/latest?cb=20170903035048)
 
 A simple UI to display pokemon with login and pokemon features
 
 ## Built with:
+
+![image]({https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white})
+![image]({https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white})
 
 - Next
 - TailwindCSS
