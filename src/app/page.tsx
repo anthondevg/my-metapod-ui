@@ -9,14 +9,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen p-24">
       <div className="bg-gray">
-        <h1 className="text-4xl">Metapod UI</h1>
-        <br />
-        <p>Hola Moana</p>
-        <Container>
-          <a href="/dashboard">inicio</a>
-          <Input />
-          
-        </Container>
+        <h1 className="text-4xl">MyMetapod UI</h1>
         <br />
       </div>
     </main>
