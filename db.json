@@ -4,6 +4,21 @@
       "email": "admin@mail.com",
       "password": "$2a$10$HNCHJKy03DQVPMYH4cfUUONHFQk7BhxEQxtx/1uifNefMyuGnIUd6",
       "id": 1
+    },
+    {
+      "email": "robwert1997@gmail.com",
+      "password": "$2a$10$nHdxNEzBsOd.i5rXWshkheu6P1U6D8bcDpRNkMWbqvWkAzbXHA7eC",
+      "id": 2
+    },
+    {
+      "email": "juja@main.com",
+      "password": "$2a$10$mCyH63e2QZWXHmwnHNcWiua0xDynmbBokxPNCoJjn0CmU.dJIfE3O",
+      "id": 3
+    },
+    {
+      "email": "juja@maildos.com",
+      "password": "$2a$10$XzbhZsaDxYkaR5eKcy7B7ulhDfE0FGEnhg9XeUBv9Ajuivr3QdqbS",
+      "id": 4
     }
   ]
 }

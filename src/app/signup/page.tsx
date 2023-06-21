@@ -2,11 +2,15 @@
 
 import React, { useState } from "react";
 import tw from "twin.macro";
+import { validateInputs } from "../utils/validations";
+import { useRouter } from "next/navigation";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState(["", ""]) as any;
+  const router = useRouter();
 
   const handleLogin = async (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
@@ -21,7 +25,10 @@ const Signup = () => {
       }),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        router.push("login");
+        console.log(data);
+      });
   };
 
   return (
@@ -96,30 +103,6 @@ const Signup = () => {
       </a>
     </main>
   );
-};
-
-const validateInputs = (email: string, password: string) => {
-  let errors = ["", ""];
-
-  if (!email) {
-    errors[0] = "missing email";
-  } else if (validateEmail(email)) {
-    errors[0] = "invalid email";
-  }
-
-  if (!password) {
-    errors[1] = "missing password";
-  }
-
-  return errors;
-};
-
-const validateEmail = (email: string) => {
-  return !String(email)
-    .toLowerCase()
-    .match(
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    );
 };
 
 export default Signup;
