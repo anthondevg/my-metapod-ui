@@ -1,6 +1,15 @@
-This is a Next with Experimental App folder and the new router features + TailwindCSS + Twin Macro boilerplate ready to develop
+#My Metapod UI
 
-It's using Babel instead of Rust Compiler
+![alt text](https://images.wikidexcdn.net/mwuploads/wikidex/6/6b/latest/20200307022334/Metapod.png)
+
+A simple UI to display pokemon with login and pokemon features
+
+##Built with:
+
+- Next
+- TailwindCSS
+- Typescript
+- Twin Macro
 
 ## Getting Started
 
