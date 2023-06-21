@@ -1,10 +1,10 @@
-# My Metapod UI
+# My-Metapod-Next/UI
 
 ![alt text](https://static.wikia.nocookie.net/videojuego/images/b/b1/Metapod.gif/revision/latest?cb=20070527120420)
 
 A simple UI to display pokemon with login and pokemon features
 
-##Built with:
+## Built with:
 
 - Next
 - TailwindCSS
