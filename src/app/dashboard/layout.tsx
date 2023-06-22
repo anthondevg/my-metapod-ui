@@ -2,7 +2,7 @@
 
 import tw from "twin.macro";
 
-const Container = tw.section`bg-black h-screen flex justify-center`;
+const Container = tw.section`bg-gradient-to-b from-[#303030] to-[#1c1c1a] px-24 h-screen`;
 
 export default function LoginLayout({
   children,

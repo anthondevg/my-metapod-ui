@@ -9,6 +9,9 @@ export default function RootLayout({
 }) {
   return (
     <html>
+      <head>
+        <title>metapod</title>
+      </head>
       <body>{children}</body>
     </html>
   );
