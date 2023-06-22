@@ -9,10 +9,7 @@ export default class MyDocument extends Document {
     initialProps.styles = (
       <>
         {initialProps.styles}
-        <style
-          data-emotion-css={critical.ids.join(" ")}
-          dangerouslySetInnerHTML={{ __html: critical.css }}
-        />
+        <style data-emotion-css={critical.ids.join(" ")} />
       </>
     );
 
@@ -21,12 +18,10 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="en">
+      <Html lang="es">
         <Head>
-          <style
-            data-emotion-css={this.props.ids?.join(" ")}
-            dangerouslySetInnerHTML={{ __html: this.props.css }}
-          />
+          <style data-emotion-css={this.props.ids?.join(" ")} />
+          <title>metapod ui</title>
         </Head>
         <body>
           <Main />

@@ -6,12 +6,13 @@ import { validateInputs } from "../utils/validations";
 import Modal from "./ modal";
 import login from "../utils/auth";
 import { useRouter } from "next/navigation";
+import loginRoute from "../hoc/loginRoute";
+interface modalTypes {
+  variant: string;
+  message: string;
+}
 
 const Login = () => {
-  interface modalTypes {
-    variant: string;
-    message: string;
-  }
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -44,7 +45,7 @@ const Login = () => {
               message: "Success! Redirecting to dashboard...",
             });
             setTimeout(() => {
-              //router.push("/dashboard");
+              router.replace("/dashboard");
             }, 1000);
             break;
           case 400:
@@ -179,4 +180,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default loginRoute(Login);

@@ -1,17 +1,15 @@
-'use client';
-import './globals.css'
-
+"use client";
+import "./globals.css";
+import React from "react";
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html>
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
-  )
+  );
 }
