@@ -1,6 +1,5 @@
 "use client";
 import "./globals.css";
-import React from "react";
 
 export default function RootLayout({
   children,
@@ -10,7 +9,7 @@ export default function RootLayout({
   return (
     <html>
       <head>
-        <title>metapod</title>
+        <title>MyMetapodUI</title>
       </head>
       <body>{children}</body>
     </html>

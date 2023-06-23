@@ -1,25 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import tw from "twin.macro";
 
-const Card = ({
-  img = "https://nintenduo.com/wp-content/uploads/2023/02/Hora-Pokemon-GO-Destacado-Jigglypuff-Shiny-00.webp",
-}) => {
-  return (
-    <div tw="rounded-xl bg-white flex flex-col shadow">
-      <div tw="relative z-10 h-56 before:block before:absolute before:-inset-0 before:bg-gradient-to-b before:to-[#36363657] before:from-transparent">
-        <img src={img} alt="" tw="w-full rounded-t-xl h-56 z-1" />
+const Card = ({ pokemonName }) => {
+  const [pokemon, setPokemon] = useState({});
 
-        <span tw="absolute bottom-2 text-white ease-in duration-300 hover:-translate-y-1 font-bold bg-green-600 rounded-3xl right-2 px-6 py-1">
-          Rayo
+  useEffect(() => {
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        setPokemon(res);
+      });
+  }, [pokemonName]);
+  return (
+    <div tw="rounded-xl bg-gray-800 flex flex-col shadow border-solid border-4 border-gray-600 cursor-pointer">
+      <div tw="relative z-1 h-56 bg-black  before:block before:absolute before:-inset-0 before:bg-gradient-to-b before:to-[#1a1a1aad] before:from-transparent">
+        {pokemon.sprites && (
+          <img
+            src={
+              pokemon.sprites.versions["generation-v"]["black-white"].animated
+                .front_default
+                ? pokemon.sprites.versions["generation-v"]["black-white"]
+                    .animated.front_default
+                : "https://nintenduo.com/wp-content/uploads/2023/02/Hora-Pokemon-GO-Destacado-Jigglypuff-Shiny-00.webp"
+            }
+            alt=""
+            tw="w-full rounded-t-xl h-56 z-30"
+          />
+        )}
+
+        <span tw="bg-indigo-600 absolute text-white font-bold  px-6 py-1 shadow -skew-x-12 right-4 -top-4">
+          {pokemon.weight}
         </span>
       </div>
-      <div tw="p-4">
-        <h3 tw="font-bold text-2xl text-green-800 mb-6">Pikachu God</h3>
+      <div tw="p-4 border-solid border-t-4 border-t-gray-500">
+        <h3 tw="font-bold text-2xl text-white mb-6">{pokemon.name}</h3>
 
-        <span tw="text-green-600">#Electrico</span>
-
-        <span tw="text-green-600">#Rayos</span>
-        <span tw="text-green-600">#NoEvolucion</span>
+        <span tw="text-white">{pokemon.weight}</span>
       </div>
     </div>
   );
