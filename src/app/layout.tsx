@@ -1,5 +1,6 @@
 "use client";
 import "./globals.css";
+import tw from "twin.macro";
 
 export default function RootLayout({
   children,
@@ -7,7 +8,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
+    <html tw="bg-gradient-to-b from-[#222222] to-[#000000] bg-contain bg-no-repeat">
       <head>
         <title>MyMetapodUI</title>
       </head>

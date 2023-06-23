@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { extractCritical } from "@emotion/server";
+import tw from "twin.macro";
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -23,7 +24,7 @@ export default class MyDocument extends Document {
           <style data-emotion-css={this.props.ids?.join(" ")} />
           <title>metapod ui</title>
         </Head>
-        <body>
+        <body tw="bg-gradient-to-b from-[#222222] to-[#000000]">
           <Main />
           <NextScript />
         </body>

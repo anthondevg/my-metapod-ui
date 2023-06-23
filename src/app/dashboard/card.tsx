@@ -8,9 +8,9 @@ const Card = ({ pokemonName, handleModal, openModal }) => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         setPokemon(res);
       });
+    console.log(pokemon);
   }, [pokemonName]);
   return (
     <div
@@ -19,7 +19,7 @@ const Card = ({ pokemonName, handleModal, openModal }) => {
         handleModal(true, pokemon);
       }}
     >
-      <div tw="relative z-1 h-56 bg-black  before:block before:absolute before:-inset-0 before:bg-gradient-to-b before:to-[#1a1a1aad] before:from-transparent">
+      <div tw="relative z-1 h-56 bg-black  before:block before:absolute before:-inset-0 before:bg-gradient-to-b before:to-[#1a1a1adf] before:from-transparent">
         {pokemon.sprites && (
           <img
             src={
@@ -41,7 +41,22 @@ const Card = ({ pokemonName, handleModal, openModal }) => {
       <div tw="p-4 border-solid border-t-4 border-t-gray-500">
         <h3 tw="font-bold text-2xl text-white mb-6">{pokemon.name}</h3>
 
-        <span tw="text-white">{pokemon.weight}</span>
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          tw="cursor-default bg-indigo-500 p-4 rounded-xl"
+        >
+          <span tw="text-white font-bold">moves</span>
+          <ul>
+            {pokemon.moves &&
+              pokemon.moves.slice(0, 3).map((move: any, i) => (
+                <li key={i} tw="text-white">
+                  {move.move.name}
+                </li>
+              ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

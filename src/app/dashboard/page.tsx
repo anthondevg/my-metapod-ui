@@ -6,6 +6,7 @@ import Header from "./header";
 import Card from "./card";
 import Pagination from "./pagination";
 import ModalInfo from "./modal";
+import Footer from "./footer";
 
 const page = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -52,10 +53,12 @@ const page = () => {
         handleModal={handleOpenModal}
         pokemon={pokemon}
       />
-      {/* 
+
       <div tw="mt-4">
         <Pagination handlePagination={handleNavigation} />
-      </div> */}
+      </div>
+
+      <Footer />
     </>
   );
 };

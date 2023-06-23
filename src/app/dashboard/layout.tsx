@@ -3,7 +3,7 @@
 import tw from "twin.macro";
 import Header from "./header";
 
-const Container = tw.section`bg-gradient-to-b from-[#222222] to-[#000000] xl:h-screen px-24`;
+const Container = tw.section`xl:px-48 px-16`;
 
 export default function LoginLayout({
   children,

@@ -40,6 +40,7 @@ const Login = () => {
           case 200:
             console.log(data.body);
             localStorage.setItem("access_token", data.body.accessToken);
+            localStorage.setItem("user", JSON.stringify(data.body.user));
             setModal({
               variant: "success",
               message: "Success! Redirecting to dashboard...",
