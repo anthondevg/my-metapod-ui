@@ -5,10 +5,13 @@ import tw from "twin.macro";
 import Header from "./header";
 import Card from "./card";
 import Pagination from "./pagination";
+import ModalInfo from "./modal";
 
 const page = () => {
   const [pokemons, setPokemons] = useState([]);
+  const [pokemon, setPokemon] = useState({});
   const [offset, setOffset] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false) as any;
 
   useEffect(() => {
     fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=10`)
@@ -22,22 +25,37 @@ const page = () => {
     setOffset(offset);
   };
 
+  const handleOpenModal = (open: Boolean, pokemon: any) => {
+    setModalOpen(open);
+    setPokemon(pokemon);
+  };
+
   return (
     <>
       <div tw="mb-4">
-        0
         <Pagination handlePagination={handleNavigation} />
       </div>
 
       <main tw="xl:grid-cols-5 grid gap-8 w-full md:grid-cols-2 lg:grid-cols-3">
         {pokemons.map((pokemon: any, index) => (
-          <Card key={index.toString()} pokemonName={pokemon.name} />
+          <Card
+            key={index.toString()}
+            pokemonName={pokemon.name}
+            handleModal={handleOpenModal}
+            openModal={modalOpen}
+          />
         ))}
       </main>
 
+      <ModalInfo
+        open={modalOpen}
+        handleModal={handleOpenModal}
+        pokemon={pokemon}
+      />
+      {/* 
       <div tw="mt-4">
         <Pagination handlePagination={handleNavigation} />
-      </div>
+      </div> */}
     </>
   );
 };

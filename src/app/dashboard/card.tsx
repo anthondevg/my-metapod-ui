@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import tw from "twin.macro";
 
-const Card = ({ pokemonName }) => {
+const Card = ({ pokemonName, handleModal, openModal }) => {
   const [pokemon, setPokemon] = useState({});
 
   useEffect(() => {
@@ -13,7 +13,12 @@ const Card = ({ pokemonName }) => {
       });
   }, [pokemonName]);
   return (
-    <div tw="rounded-xl bg-gray-800 flex flex-col shadow border-solid border-4 border-gray-600 cursor-pointer">
+    <div
+      tw="rounded-xl bg-gray-800 flex flex-col shadow border-solid border-4 border-gray-600 cursor-pointer"
+      onClick={() => {
+        handleModal(true, pokemon);
+      }}
+    >
       <div tw="relative z-1 h-56 bg-black  before:block before:absolute before:-inset-0 before:bg-gradient-to-b before:to-[#1a1a1aad] before:from-transparent">
         {pokemon.sprites && (
           <img
@@ -25,7 +30,7 @@ const Card = ({ pokemonName }) => {
                 : "https://nintenduo.com/wp-content/uploads/2023/02/Hora-Pokemon-GO-Destacado-Jigglypuff-Shiny-00.webp"
             }
             alt=""
-            tw="w-full rounded-t-xl h-56 z-30"
+            tw="w-full rounded-t-xl h-56 z-10"
           />
         )}
 
