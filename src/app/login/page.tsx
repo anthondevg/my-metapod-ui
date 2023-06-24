@@ -3,11 +3,11 @@
 import React, { useState } from "react";
 import tw from "twin.macro";
 import { validateInputs } from "../utils/validations";
-import Modal from "./ modal";
+import Alert from "./alert";
 import login from "../utils/auth";
 import { useRouter } from "next/navigation";
 import loginRoute from "../hoc/loginRoute";
-interface modalTypes {
+interface alertTypes {
   variant: string;
   message: string;
 }
@@ -18,12 +18,12 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState([]) as any;
   const [loading, setLoading] = useState(false);
-  const [modal, setModal] = useState({} as modalTypes);
+  const [alert, setAlert] = useState({} as alertTypes);
   const router = useRouter();
 
   const handleLogin = async (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
-    resetModal();
+    resetAlert();
     // validate inputs
     const errors = await validateInputs(email, password);
     setErrors(errors);
@@ -33,15 +33,12 @@ const Login = () => {
     setLoading(true); // loading state
 
     login(email, password).then((data: any) => {
-      console.log(data.status);
-
       setTimeout(() => {
         switch (data.status) {
           case 200:
-            console.log(data.body);
             localStorage.setItem("access_token", data.body.accessToken);
             localStorage.setItem("user", JSON.stringify(data.body.user));
-            setModal({
+            setAlert({
               variant: "success",
               message: "Success! Redirecting to dashboard...",
             });
@@ -50,7 +47,7 @@ const Login = () => {
             }, 1000);
             break;
           case 400:
-            setModal({
+            setAlert({
               variant: "error",
               message: data.body,
             });
@@ -63,11 +60,11 @@ const Login = () => {
     });
   };
 
-  const resetModal = () => {
-    setModal({
+  const resetAlert = () => {
+    setAlert({
       variant: "",
       message: "",
-    }); //remove modal if exists
+    }); //remove alert if exists
   };
 
   return (
@@ -91,7 +88,7 @@ const Login = () => {
         onSubmit={handleLogin}
         noValidate
       >
-        <Modal variant={modal.variant}>{modal.message}</Modal>
+        <Alert variant={alert.variant}>{alert.message}</Alert>
 
         <h3 tw="font-bold text-2xl content-center w-full">Login</h3>
         {errors.map((error: string) => (
@@ -114,6 +111,7 @@ const Login = () => {
         </div>
 
         <input
+          id="emailLoginForm"
           type="email"
           aria-label="email"
           formNoValidate
@@ -132,6 +130,7 @@ const Login = () => {
         </div>
 
         <input
+          id="passwordLoginForm"
           type={showPassword ? "text" : "password"}
           aria-label="password"
           placeholder="************"
@@ -166,6 +165,7 @@ const Login = () => {
           <button
             tw="px-12 py-4 bg-red-400 mt-4 rounded-md text-white font-bold"
             type="submit"
+            id="submitLogin"
           >
             Login
           </button>

@@ -10,7 +10,6 @@ const Card = ({ pokemonName, handleModal, openModal }) => {
       .then((res) => {
         setPokemon(res);
       });
-    console.log(pokemon);
   }, [pokemonName]);
   return (
     <div

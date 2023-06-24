@@ -6,9 +6,7 @@ const profile = () => {
   const [user, setUser] = useState({}) as any;
   useEffect(() => {
     let user = localStorage.getItem("user");
-
     setUser(JSON.parse(user));
-    console.log(JSON.parse(user));
   }, []);
 
   return (

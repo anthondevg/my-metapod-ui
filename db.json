@@ -19,6 +19,11 @@
       "email": "juja@maildos.com",
       "password": "$2a$10$XzbhZsaDxYkaR5eKcy7B7ulhDfE0FGEnhg9XeUBv9Ajuivr3QdqbS",
       "id": 4
+    },
+    {
+      "email": "moana@admin.com",
+      "password": "$2a$10$yMdKu6fgaP4l/PpbirFAve1aX.T74GFcbA0F9wSGlKNPqq/g/C1Wm",
+      "id": 5
     }
   ]
 }

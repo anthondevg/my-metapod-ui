@@ -8,7 +8,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html tw="bg-gradient-to-b from-[#222222] to-[#000000] bg-contain bg-no-repeat">
+    <html>
       <head>
         <title>MyMetapodUI</title>
       </head>

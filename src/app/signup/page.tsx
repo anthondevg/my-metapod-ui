@@ -27,7 +27,6 @@ const Signup = () => {
       .then((res) => res.json())
       .then((data) => {
         router.push("login");
-        console.log(data);
       });
   };
 

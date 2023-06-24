@@ -15,7 +15,6 @@ export default function ModalInfo({ open, handleModal, pokemon }) {
         tw="bg-gray-800 p-6 w-1/3 z-30 rounded-xl relative"
         onClick={(e) => {
           e.stopPropagation();
-          console.log("click div");
         }}
       >
         {pokemon.sprites && (

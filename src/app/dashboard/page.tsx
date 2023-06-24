@@ -33,7 +33,8 @@ const page = () => {
 
   return (
     <>
-      <div tw="mb-4">
+      <h3 tw="text-white font-bold text-3xl">Dashboard</h3>
+      <div tw="mb-12 text-left w-full flex justify-center">
         <Pagination handlePagination={handleNavigation} />
       </div>
 
@@ -54,10 +55,9 @@ const page = () => {
         pokemon={pokemon}
       />
 
-      <div tw="mt-4">
+      <div tw="mb-8 mt-8 text-left w-full flex justify-center">
         <Pagination handlePagination={handleNavigation} />
       </div>
-
       <Footer />
     </>
   );
